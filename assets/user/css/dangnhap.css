@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #444444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    width: 1700px;  /* Increased width */
+    height: 850px; /* Increased height */
+    background-color: #222222;
+    border-radius: 18px; /* Slightly increased border radius */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.left-section {
+    width: 70%;
+    height: 100%;
+    position: relative;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px; /* Increased padding */
+    color: white;
+}
+
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/api/placeholder/450/550');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8
+    /*filter: grayscale(100%);*/
+}
+
+.tagline {
+    font-size: 30px; /* Increased font size */
+    font-weight: bold;
+    margin-bottom: 8px; /* Increased margin */
+    line-height: 1.2;
+}
+
+.sub-tagline {
+    font-size: 20px; /* Increased font size */
+    margin-bottom: 25px; /* Increased margin */
+}
+
+.right-section {
+    width: 50%;
+    padding: 20px; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+}
+
+.back-link {
+    text-align: right;
+    margin-bottom: 40px; /* Increased margin */
+}
+
+.back-link a {
+    color: #a8a8a8;
+    text-decoration: none;
+    font-size: 16px; /* Increased font size */
+}
+
+.form-header {
+    margin-bottom: 30px; /* Increased margin */
+}
+
+.form-header h2 {
+    color: white;
+    font-size: 30px; /* Increased font size */
+    margin-bottom: 15px; /* Increased margin */
+}
+
+.form-header p {
+    color: #a8a8a8;
+    font-size: 16px; /* Increased font size */
+}
+
+.form-header p a {
+    color: #a8a8a8;
+    text-decoration: underline;
+}
+
+.form-group {
+    margin-bottom: 25px; /* Increased margin */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px 18px; /* Increased padding */
+    border-radius: 8px; /* Increased border radius */
+    border: none;
+    background-color: #333333;
+    color: white;
+    font-size: 16px; /* Increased font size */
+}
+
+.form-group input::placeholder {
+    color: #a8a8a8;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Increased gap */
+    margin-bottom: 25px; /* Increased margin */
+    color: #a8a8a8;
+    font-size: 16px; /* Increased font size */
+}
+
+.remember-me input[type="checkbox"] {
+    width: 18px; /* Increased size */
+    height: 18px; /* Increased size */
+    accent-color: #555555;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px; /* Increased padding */
+    border-radius: 8px; /* Increased border radius */
+    border: none;
+    background-color: #555555;
+    color: white;
+    font-weight: bold;
+    font-size: 16px; /* Increased font size */
+    cursor: pointer;
+    margin-bottom: 30px; /* Increased margin */
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #777777;
+}
+
+.social-login {
+    display: flex;
+    gap: 15px; /* Increased gap */
+}
+
+.social-btn {
+    flex: 1;
+    padding: 14px; /* Increased padding */
+    border-radius: 8px; /* Increased border radius */
+    border: 1px solid #444444;
+    background-color: transparent;
+    color: white;
+    font-size: 16px; /* Increased font size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* Increased gap */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.social-btn svg {
+    width: 20px; /* Increased size */
+    height: 20px; /* Increased size */
+}
+
+.social-btn:hover {
+    background-color: #333333;
+}

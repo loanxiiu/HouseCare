@@ -93,49 +93,6 @@
 			}
 			return ['success' => false, 'message' => 'Tên đăng nhập hoặc mật khẩu không đúng!'];
 		}
-		
-		// Auto-login using remember token
-		public function autoDangNhap($token)
-		{
-			$taiKhoan = $this->db->kiemTraRememberToken($token);
-			if ($taiKhoan) {
-				$maUser = $taiKhoan->getMaUser();
-				$maQuyen = $taiKhoan->getMaQuyen();
-				$username = $taiKhoan->getUsername();
-				
-				if ($maQuyen == 1) { // Admin
-					$admin = $this->adminDB->layBangId($maUser);
-					if ($admin) {
-						return [
-							'success' => true,
-							'ma' => $maUser,
-							'ten' => $admin->getTen(),
-							'anh' => $admin->getAnh(),
-							'username' => $username,
-							'role' => 1
-						];
-					}
-				} elseif ($maQuyen == 2) { // Customer
-					$khachHang = $this->khachHangDB->layBangId($maUser);
-					if ($khachHang) {
-						return [
-							'success' => true,
-							'ma' => $maUser,
-							'ten' => $khachHang->getTen(),
-							'anh' => $khachHang->getAnh(),
-							'username' => $username,
-							'role' => 2
-						];
-					}
-				}
-			}
-			return ['success' => false];
-		}
-		
-		// Clear remember token on logout
-		public function clearRememberToken($maUser)
-		{
-			return $this->db->xoaRememberToken($maUser);
-		}
+
 	}
 	?>

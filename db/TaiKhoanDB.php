@@ -207,63 +207,6 @@
 			}
 			return null;
 		}
-		
-		// Lưu remember token
-		public function luuRememberToken($maUser, $token)
-		{
-			$stmt = $this->conn->prepare("UPDATE TaiKhoan SET remember_token = ? WHERE MaUser = ?");
-			if ($stmt === false) {
-				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
-			}
-			
-			$stmt->bind_param("si", $token, $maUser);
-			$result = $stmt->execute();
-			$stmt->close();
-			
-			return $result;
-		}
-		
-		// Kiểm tra remember token
-		public function kiemTraRememberToken($token)
-		{
-			$stmt = $this->conn->prepare("SELECT * FROM TaiKhoan WHERE remember_token = ?");
-			if ($stmt === false) {
-				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
-			}
-			
-			$stmt->bind_param("s", $token);
-			$stmt->execute();
-			$result = $stmt->get_result();
-			$row = $result->fetch_assoc();
-			$stmt->close();
-			
-			if ($row) {
-				$taiKhoan = new TaiKhoan();
-				$taiKhoan->setMa($row['Ma']);
-				$taiKhoan->setMaUser($row['MaUser']);
-				$taiKhoan->setMaQuyen($row['MaQuyen']);
-				$taiKhoan->setUsername($row['username']);
-				$taiKhoan->setPassword($row['password']);
-				return $taiKhoan;
-			}
-			return null;
-		}
-		
-		// Xóa remember token khi đăng xuất
-		public function xoaRememberToken($maUser)
-		{
-			$stmt = $this->conn->prepare("UPDATE TaiKhoan SET remember_token = NULL WHERE MaUser = ?");
-			if ($stmt === false) {
-				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
-			}
-			
-			$stmt->bind_param("i", $maUser);
-			$result = $stmt->execute();
-			$stmt->close();
-			
-			return $result;
-		}
 	}
 	?>
 
-<!--ALTER TABLE TaiKhoan ADD COLUMN remember_token VARCHAR(255) DEFAULT NULL;-->

@@ -7,25 +7,6 @@
 	$message = '';
 	$controller = new TaiKhoanController();
 	
-	// Check for auto-login using remember token
-	if (!isset($_SESSION['username']) && isset($_COOKIE['remember_token'])) {
-		$result = $controller->autoDangNhap($_COOKIE['remember_token']);
-		if ($result['success']) {
-			$_SESSION['ma'] = $result['ma'];
-			$_SESSION['ten'] = $result['ten'];
-			$_SESSION['anh'] = $result['anh'];
-			$_SESSION['username'] = $result['username'];
-			$_SESSION['quyen'] = $result['role'];
-			
-			if ($result['role'] === 1) {
-				header("Location: ../admin/Dashboard.php");
-			} else {
-				header("Location: ../khachhang/TrangChu.php");
-			}
-			exit();
-		}
-	}
-	
 	// Pre-fill username from cookie if available
 	$username_value = isset($_COOKIE['username']) ? htmlspecialchars($_COOKIE['username']) : (isset($_POST['username']) ? htmlspecialchars($_POST['username']) : '');
 	

@@ -18,7 +18,7 @@
 		// Thêm sản phẩm mới
 		public function them(SanPham $sanPham)
 		{
-			$stmt = $this->conn->prepare("INSERT INTO SanPham (TenSP, DonGia, SoLuong, Anh, MaDM) VALUES (?, ?, ?, ?, ?)");
+			$stmt = $this->conn->prepare("INSERT INTO SanPham (TenSP, DonGia, SoLuong, Anh, MaDM, MoTa) VALUES (?, ?, ?, ?, ?, ?)");
 			if ($stmt === false) {
 				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
 			}
@@ -27,8 +27,9 @@
 			$soLuong = $sanPham->getSoLuong();
 			$anh = $sanPham->getAnh();
 			$maDanhMuc = $sanPham->getMaDanhMuc();
+			$moTa = $sanPham->getMoTa();
 
-			$stmt->bind_param("sdisi", $ten, $gia, $soLuong, $anh, $maDanhMuc);
+			$stmt->bind_param("sdisi", $ten, $gia, $soLuong, $anh, $maDanhMuc, $moTa);
 			
 			$result = $stmt->execute();
 			if ($result === false) {
@@ -42,7 +43,7 @@
 		// Sửa thông tin sản phẩm
 		public function sua(SanPham $sanPham)
 		{
-			$stmt = $this->conn->prepare("UPDATE SanPham SET TenSP = ?, DonGia = ?, SoLuong = ?, Anh = ?, MaDM = ? WHERE Ma = ?");
+			$stmt = $this->conn->prepare("UPDATE SanPham SET TenSP = ?, DonGia = ?, SoLuong = ?, Anh = ?, MaDM = ?, MoTa=? WHERE Ma = ?");
 			if ($stmt === false) {
 				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
 			}
@@ -52,6 +53,7 @@
 			$soLuong = $sanPham->getSoLuong();
 			$anh = $sanPham->getAnh();
 			$maDanhMuc = $sanPham->getMaDanhMuc();
+			$moTa = $sanPham->getMoTa();
 			
 			$stmt->bind_param("sdisii", $ten, $gia, $soLuong, $anh, $maDanhMuc, $ma);
 			
@@ -101,6 +103,7 @@
 					$row['DonGia'],
 					$row['Anh'],
 					$row['MaDM'],
+					$row['MoTa']
 				);
 				$sanPhams[] = $sanPham;
 			}
@@ -130,7 +133,8 @@
 					$row['SoLuong'],
 					$row['DonGia'],
 					$row['Anh'],
-					$row['MaDM']
+					$row['MaDM'],
+					$row['MoTa']
 				);
 				return $sanPham;
 			}
@@ -158,7 +162,8 @@
 					$row['SoLuong'],
 					$row['DonGia'],
 					$row['Anh'],
-					$row['MaDM']
+					$row['MaDM'],
+					$row['MoTa']
 				);
 				$sanPhams[] = $sanPham;
 			}

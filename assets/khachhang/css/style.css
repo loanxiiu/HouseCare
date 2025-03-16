@@ -9,91 +9,6 @@ body {
     background-color: #f8f8f8;
 }
 
-/* Header */
-.header {
-    background-color: #333333;
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    width: 40px;
-    margin-right: 8px;
-}
-
-.search-bar {
-    flex: 1;
-    max-width: 600px;
-    margin: 0 20px;
-    position: relative;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 4px;
-    border: none;
-    font-size: 14px;
-    background-color: #f0f0f0;
-}
-
-.search-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 50px;
-    background-color: #555555;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-button:hover {
-    background-color: #666666;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 20px;
-    color: white;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-}
-
 /* Banner */
 .banner {
     margin: 20px 0;
@@ -392,54 +307,6 @@ body {
     gap: 15px;
 }
 
-/* Footer */
-footer {
-    background-color: #333333;
-    padding: 40px 0;
-    margin-top: 40px;
-    border-top: 1px solid #e0e0e0;
-    color: #f0f0f0;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
-}
-
-.footer-column h3 {
-    font-size: 14px;
-    color: #ffffff;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.footer-column ul {
-    list-style: none;
-}
-
-.footer-column li {
-    margin-bottom: 10px;
-}
-
-.footer-column a {
-    color: #cccccc;
-    font-size: 12px;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.footer-column a:hover {
-    color: #ffffff;
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 30px;
-    color: #aaaaaa;
-    font-size: 12px;
-}
-
 /* Animations */
 @keyframes fadeIn {
     from {
@@ -524,4 +391,14 @@ footer {
 }
 .banner, .banner-container {
     height: 500px; /* điều chỉnh theo nhu cầu */
+}
+.product-card {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
 }

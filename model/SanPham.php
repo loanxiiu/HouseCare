@@ -10,6 +10,8 @@
 		private $anh;
 		private $maDanhMuc;
 		
+		private $moTa;
+		
 		/**
 		 * @param $ma
 		 * @param $ten
@@ -18,7 +20,7 @@
 		 * @param $anh
 		 * @param $maDanhMuc
 		 */
-		public function __construct($ma, $ten, $soLuong, $gia, $anh, $maDanhMuc)
+		public function __construct($ma, $ten, $soLuong, $gia, $anh, $maDanhMuc, $moTa)
 		{
 			$this->ma = $ma;
 			$this->ten = $ten;
@@ -26,6 +28,23 @@
 			$this->gia = $gia;
 			$this->anh = $anh;
 			$this->maDanhMuc = $maDanhMuc;
+			$this->moTa = $moTa;
+		}
+		
+		/**
+		 * @return mixed
+		 */
+		public function getMoTa()
+		{
+			return $this->moTa;
+		}
+		
+		/**
+		 * @param mixed $moTa
+		 */
+		public function setMoTa($moTa): void
+		{
+			$this->moTa = $moTa;
 		}
 		
 		

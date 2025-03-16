@@ -10,6 +10,20 @@
 		public $soLuong;
 		
 		/**
+		 * @param $ma
+		 * @param $maGioHang
+		 * @param $maSanPham
+		 * @param $soLuong
+		 */
+		public function __construct($ma, $maGioHang, $maSanPham, $soLuong)
+		{
+			$this->ma = $ma;
+			$this->maGioHang = $maGioHang;
+			$this->maSanPham = $maSanPham;
+			$this->soLuong = $soLuong;
+		}
+		
+		/**
 		 * @return mixed
 		 */
 		public function getMa()

@@ -22,6 +22,12 @@
 			return $danhSachSanPham;
 		}
 		
+		public function LayBangId($id)
+		{
+		$sanPham = $this->db->LayBangId($id);
+		return $sanPham;
+		}
+		
 		public function timKiemSanPham($tuKhoa)
 		{
 			$dsSanPham = [];

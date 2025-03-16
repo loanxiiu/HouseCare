@@ -13,7 +13,7 @@
 
     productCards.forEach(card => {
     card.addEventListener('click', function() {
-    alert('Bạn đã chọn sản phẩm: ' + this.querySelector('.product-name').textContent);
+    // alert('Bạn đã chọn sản phẩm: ' + this.querySelector('.product-name').textContent);
 });
 });
 

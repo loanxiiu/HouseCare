@@ -1,5 +1,5 @@
 <?php session_start();
-	require_once __DIR__ . '/../../controller/SanPhamController.php';
+	require_once __DIR__ . '/../../../controller/SanPhamController.php';
 	
 	use BTL\controller\SanPhamController;
 	
@@ -30,8 +30,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Trực Tuyến - Mua Sắm Như Shopee</title>
-    <link rel="stylesheet" href="/assets/khachhang/css/timkiem.css">
-    <link rel="stylesheet" href="/assets/khachhang/css/common.css">
+    <link rel="stylesheet" href="/view/assets/khachhang/css/timkiem.css">
+    <link rel="stylesheet" href="/view/assets/khachhang/css/common.css">
     <style>
         /* Add this CSS to make the product card look clickable */
         .product-card {
@@ -87,9 +87,9 @@
 
     <div class="product-grid">
 		<?php foreach ($dsSanPham as $sp): ?>
-            <a href="../khachhang/SanPham.php?id=<?php echo htmlspecialchars($sp->getMa()); ?>" class="product-card">
+            <a href="id=<?php echo htmlspecialchars($sp->getMa()); ?>" class="product-card">
                 <div class="product-image"
-                     style="background-image: url('<?php echo '/assets/images/sanpham/' . htmlspecialchars($sp->getAnh()) . '.jpg'; ?>');"></div>
+                     style="background-image: url('<?php echo '/view/assets/images/sanpham/' . htmlspecialchars($sp->getAnh()) . '.jpg'; ?>');"></div>
                 <div class="product-info">
                     <div class="product-name"><?php echo htmlspecialchars($sp->getTen()); ?></div>
                     <div class="product-price"><?php echo number_format($sp->getGia(), 0, ',', '.'); ?>đ</div>
@@ -100,6 +100,6 @@
     </div>
 </div>
 <?php //require_once __DIR__ . '/footer.php'; ?>
-<script src="/assets/khachhang/js/timkiem.js"></script>
+<script src="/view/assets/khachhang/js/timkiem.js"></script>
 </body>
 </html>

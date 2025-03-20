@@ -1,23 +1,54 @@
 <?php
 	namespace BTL\controller;
-	require_once __DIR__ . '/../model/SanPham.php';
-	require_once __DIR__ . '/../db/SanPhamDB.php';
 	
-	use BTL\db\SanPhamDB;
-	use BTL\model\User;
+	use BTL\db\KhachHangDB;
+	use BTL\model\KhachHang;
+	
+	require_once __DIR__ . '/../db/KhachHangDB.php';
+	require_once __DIR__ . '/../model/KhachHang.php';
 	
 	class UserController
 	{
-//		public function index(){
-//			$user = new User(1, "John Doe", "john@example.com", "123 Street", "avatar.jpg");
-//			echo $user->getTen();
-//		}
+		private $khachHangDB;
 		
+		public function __construct()
+		{
+			$this->khachHangDB = new KhachHangDB();
+		}
+		
+		public function Sua($ma)
+		{
+			return $this->khachHangDB->sua($ma);
+		}
+		
+		public function Xoa($ma)
+		{
+			return $this->khachHangDB->xoa($ma);
+		}
+		
+		public function LayTatCa()
+		{
+			return $this->khachHangDB->layTatCa();
+		}
+		
+		public function LayBangId($id)
+		{
+			return $this->khachHangDB->layBangId($id);
+		}
+		
+		public function updateUser(KhachHang $khachHang)
+		{
+			return $this->khachHangDB->sua($khachHang);
+		}
+		
+		public function deleteUser($id)
+		{
+			return $this->khachHangDB->xoa($id);
+		}
+		
+		public function getUserById($id)
+		{
+			return $this->khachHangDB->layBangId($id);
+		}
 	}
-	
-//	$user = new UserController();
-//	 $user->index();
-	 $sanphamDB = new SanPhamDB();
-	 echo $sanphamDB->conn;
-	
-	
+	?>

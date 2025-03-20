@@ -316,7 +316,7 @@
 <body>
 <header class="header">
 	<div class="logo">
-		<img class="avatar" src="/assets/images/logo.png" alt="Logo">
+		<img class="avatar" src="/view/assets/images/logo.png" alt="Logo">
 		<span>Quản Trị Hệ Thống</span>
 	</div>
 	<div class="menu">
@@ -329,7 +329,7 @@
 	<!-- Sidebar -->
 	<div class="sidebar">
 		<div class="logo">
-			<img class="avatar" src="/assets/images/admin-avatar.jpg" alt="Admin Avatar">
+			<img class="avatar" src="/view/assets/images/admin-avatar.jpg" alt="Admin Avatar">
 			<p>Xin chào, Admin</p>
 		</div>
 		<ul>
@@ -398,7 +398,7 @@
 			<tbody>
 			<tr>
 				<td>#SP001</td>
-				<td><img src="/assets/images/product1.jpg" alt="Bánh mì" class="product-image"></td>
+				<td><img src="/view/assets/images/product1.jpg" alt="Bánh mì" class="product-image"></td>
 				<td>Bánh mì thịt nướng</td>
 				<td>Thực phẩm</td>
 				<td>35,000 ₫</td>
@@ -411,7 +411,7 @@
 			</tr>
 			<tr>
 				<td>#SP002</td>
-				<td><img src="/assets/images/product2.jpg" alt="Cà phê" class="product-image"></td>
+				<td><img src="/view/assets/images/product2.jpg" alt="Cà phê" class="product-image"></td>
 				<td>Cà phê đen đá</td>
 				<td>Đồ uống</td>
 				<td>25,000 ₫</td>
@@ -424,7 +424,7 @@
 			</tr>
 			<tr>
 				<td>#SP003</td>
-				<td><img src="/assets/images/product3.jpg" alt="Bánh flan" class="product-image"></td>
+				<td><img src="/view/assets/images/product3.jpg" alt="Bánh flan" class="product-image"></td>
 				<td>Bánh flan caramel</td>
 				<td>Tráng miệng</td>
 				<td>18,000 ₫</td>
@@ -437,7 +437,7 @@
 			</tr>
 			<tr>
 				<td>#SP004</td>
-				<td><img src="/assets/images/product4.jpg" alt="Nước cam" class="product-image"></td>
+				<td><img src="/view/assets/images/product4.jpg" alt="Nước cam" class="product-image"></td>
 				<td>Nước cam tươi</td>
 				<td>Đồ uống</td>
 				<td>32,000 ₫</td>
@@ -450,7 +450,7 @@
 			</tr>
 			<tr>
 				<td>#SP005</td>
-				<td><img src="/assets/images/product5.jpg" alt="Bánh quy" class="product-image"></td>
+				<td><img src="/view/assets/images/product5.jpg" alt="Bánh quy" class="product-image"></td>
 				<td>Bánh quy chocolate</td>
 				<td>Đồ ăn nhẹ</td>
 				<td>28,000 ₫</td>
@@ -463,7 +463,7 @@
 			</tr>
 			<tr>
 				<td>#SP006</td>
-				<td><img src="/assets/images/product6.jpg" alt="Trà sữa" class="product-image"></td>
+				<td><img src="/view/assets/images/product6.jpg" alt="Trà sữa" class="product-image"></td>
 				<td>Trà sữa trân châu</td>
 				<td>Đồ uống</td>
 				<td>40,000 ₫</td>
@@ -476,7 +476,7 @@
 			</tr>
 			<tr>
 				<td>#SP007</td>
-				<td><img src="/assets/images/product7.jpg" alt="Cơm chiên" class="product-image"></td>
+				<td><img src="/view/assets/images/product7.jpg" alt="Cơm chiên" class="product-image"></td>
 				<td>Cơm chiên dương châu</td>
 				<td>Thực phẩm</td>
 				<td>55,000 ₫</td>
@@ -489,7 +489,7 @@
 			</tr>
 			<tr>
 				<td>#SP008</td>
-				<td><img src="/assets/images/product8.jpg" alt="Smoothie" class="product-image"></td>
+				<td><img src="/view/assets/images/product8.jpg" alt="Smoothie" class="product-image"></td>
 				<td>Smoothie xoài</td>
 				<td>Đồ uống</td>
 				<td>38,000 ₫</td>

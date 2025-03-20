@@ -63,12 +63,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
           integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="/assets/user/css/dangnhap.css">
+    <link rel="stylesheet" href="/view/assets/user/css/dangnhap.css">
 </head>
 <body>
 <div class="login-container">
     <div class="left-section">
-        <div style="background-image: url('/assets/images/dangnhap/img.png');" class="image-container"></div>
+        <div style="background-image: url('/view/assets/images/dangnhap/img.png');" class="image-container"></div>
     </div>
     <div class="right-section">
         <div class="back-link">

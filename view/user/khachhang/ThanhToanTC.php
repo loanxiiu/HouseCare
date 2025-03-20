@@ -1,5 +1,57 @@
-<?php session_start(); ?>
-<!DOCTYPE html>
+<?php
+	session_start();
+	require_once __DIR__ . '/../../../controller/GioHangController.php';
+	require_once __DIR__ . '/../../../controller/DonHangController.php';
+	require_once __DIR__ . '/../../../controller/ThanhToanController.php';
+	
+	use BTL\controller\GioHangController;
+	use BTL\controller\DonHangController;
+	use BTL\controller\ThanhToanController;
+	
+	if (!isset($_SESSION['ma'])) {
+		header("Location: /view/user/DangNhap.php");
+		exit();
+	}
+	
+	$gioHangController = new GioHangController();
+	$donHangController = new DonHangController();
+	$thanhToanController = new ThanhToanController();
+	
+	$gioHang = $gioHangController->LayGioHangCuaNguoiDung($_SESSION['ma']);
+	if (!$gioHang || empty($gioHang->getChiTietGioHangs())) {
+		header("Location: /view/khachhang/GioHang.php");
+		exit();
+	}
+	
+	$message = '';
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['thanh_toan'])) {
+		$phuongThuc = trim($_POST['phuong_thuc']);
+		$orderResult = $donHangController->DatHang($_SESSION['ma']);
+		
+		if ($orderResult['success']) {
+			$thanhToan = new \BTL\model\ThanhToan(
+				null,
+				$orderResult['maDonHang'],
+				date('Y-m-d H:i:s'),
+				$gioHang->getDonGia() + 30000, // Total inclut frais de port
+				$_SESSION['ma'],
+				$phuongThuc,
+				'Thành công'
+			);
+			
+			if ($thanhToanController->Them($thanhToan)) {
+				header("Location: /view/khachhang/order-confirmation.php?maDonHang=" . $orderResult['maDonHang']);
+				exit();
+			} else {
+				$message = "<p class='error'>Lỗi khi xử lý thanh toán!</p>";
+			}
+		} else {
+			$message = "<p class='error'>" . htmlspecialchars($orderResult['message']) . "</p>";
+		}
+	}
+?>
+
+<!-- Le reste du code HTML reste inchangé --><!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -245,7 +297,7 @@
 
         <div class="item-list">
             <div class="order-item">
-                <div class="item-image" style="background-image: url('/assets/images/sanpham/anh1.jpg')"></div>
+                <div class="item-image" style="background-image: url('/view/assets/images/sanpham/anh1.jpg')"></div>
                 <div class="item-details">
                     <div class="item-name">Nồi cơm điện Philips</div>
                     <div class="item-qty">Số lượng: 1</div>
@@ -254,7 +306,7 @@
             </div>
 
             <div class="order-item">
-                <div class="item-image" style="background-image: url('/assets/images/sanpham/anh2.jpg')"></div>
+                <div class="item-image" style="background-image: url('/view/assets/images/sanpham/anh2.jpg')"></div>
                 <div class="item-details">
                     <div class="item-name">Máy xay sinh tố Sunhouse</div>
                     <div class="item-qty">Số lượng: 1</div>
@@ -263,7 +315,7 @@
             </div>
 
             <div class="order-item">
-                <div class="item-image" style="background-image: url('/assets/images/sanpham/anh3.jpg')"></div>
+                <div class="item-image" style="background-image: url('/view/assets/images/sanpham/anh3.jpg')"></div>
                 <div class="item-details">
                     <div class="item-name">Bộ dao nhà bếp Elmich</div>
                     <div class="item-qty">Số lượng: 1</div>

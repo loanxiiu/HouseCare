@@ -1,10 +1,13 @@
 <?php
 	session_start();
-	require_once __DIR__ . '/../../controller/SanPhamController.php';
+	require_once __DIR__ . '/../../../controller/SanPhamController.php';
+	require_once __DIR__ . '/../../../controller/DonHangController.php';
 	
 	use BTL\controller\SanPhamController;
+	use BTL\controller\DonHangController;
 	
 	$controller = new SanPhamController();
+	$donHangController = new DonHangController();
 	$product = null;
 	$message = '';
 	
@@ -24,20 +27,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
-    <link rel="stylesheet" href="/assets/khachhang/css/sanpham.css">
-    <link rel="stylesheet" href="/assets/khachhang/css/common.css">
+    <link rel="stylesheet" href="/view/assets/khachhang/css/sanpham.css">
+    <link rel="stylesheet" href="/view/assets/khachhang/css/common.css">
 </head>
 <body>
 <?php require_once __DIR__ . '/header.php'; ?>
 
 <div class="container">
 	<?php if ($message): ?>
-        <span class="error"><?php echo $message; ?></span>
-	<?php elseif ($product): ?>
+        <span class="message"><?php echo $message; ?></span>
+	<?php endif; ?>
+	
+	<?php if ($_SESSION['message']): ?>
+        <span class="message"><?php echo $_SESSION['message']; ?></span>
+		<?php $_SESSION['message'] = null; ?>
+	<?php endif; ?>
+	
+	<?php if ($product): ?>
         <div class="product-detail">
             <div class="product-images">
                 <div class="main-image">
-                    <img src="/assets/images/sanpham/<?php echo htmlspecialchars($product->getAnh()); ?>.jpg" alt="<?php echo htmlspecialchars($product->getTen()); ?>" height="400">
+                    <img src="/view/assets/images/sanpham/<?php echo htmlspecialchars($product->getAnh()); ?>.jpg"
+                         alt="<?php echo htmlspecialchars($product->getTen()); ?>" height="400">
                 </div>
             </div>
 
@@ -49,20 +60,24 @@
                     <div class="review-count">(0 đánh giá)</div>
                 </div>
 
-                <div class="product-options">
-                    <label class="option-label">Số lượng:</label>
-                    <div class="quantity-selector">
-                        <button class="quantity-btn">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1" max="<?php echo $product->getSoLuong(); ?>">
-                        <button class="quantity-btn">+</button>
+                <form method="post" id="product-form" action="../khachhang/be/ThemVaoGioHang.php">
+                    <div class="product-options">
+                        <label class="option-label">Số lượng:</label>
+                        <div class="quantity-selector">
+                            <button type="button" class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+                            <input type="number" name="quantity" class="quantity-input"
+                                   value="1" min="1" max="<?php echo $product->getSoLuong(); ?>">
+                            <button type="button" class="quantity-btn" onclick="updateQuantity(1)">+</button>
+                        </div>
                     </div>
-                </div>
 
-                <div class="button-group">
-                    <button class="add-to-cart-btn">Thêm vào giỏ hàng</button>
-                    <button class="buy-now-btn">Mua ngay</button>
-                    <button class="wishlist-btn">Thêm vào danh sách yêu thích</button>
-                </div>
+                    <div class="button-group">
+                        <input type="hidden" name="product_id" value="<?php echo $product->getMa(); ?>">
+                        <button type="submit" name="add_to_cart" class="add-to-cart-btn">Thêm vào giỏ hàng</button>
+                        <button type="submit" name="buy_now" class="buy-now-btn">Mua ngay</button>
+                        <button type="button" class="wishlist-btn">Thêm vào danh sách yêu thích</button>
+                    </div>
+                </form>
 
                 <div class="product-meta">
                     <div class="meta-item">
@@ -71,7 +86,7 @@
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Danh mục:</span>
-                        <span><?php echo $product->getMaDanhMuc(); // You might want to join with DanhMuc table for name ?></span>
+                        <span><?php echo $product->getMaDanhMuc(); ?></span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Số lượng còn lại:</span>
@@ -109,7 +124,6 @@
                             <th>Thông số</th>
                             <td><?php echo htmlspecialchars($product->getMoTa() ?: 'Chưa cập nhật'); ?></td>
                         </tr>
-                        <!-- Add more rows as needed based on your product specs -->
                     </table>
                 </div>
                 <div class="tab-pane" id="reviews">
@@ -128,13 +142,13 @@
             <h2>Sản phẩm liên quan</h2>
             <div class="product-grid">
 				<?php
-					$relatedProducts = $controller->LayTatCa(); // Fetch all products for simplicity
+					$relatedProducts = $controller->LayTatCa();
 					$count = 0;
 					foreach ($relatedProducts as $relatedProduct) {
 						if ($relatedProduct->getMa() != $product->getMa() && $count < 4) {
 							echo '<div class="product-card">';
 							echo '<div class="product-card-image">';
-							echo '<img src="/assets/images/sanpham/' . htmlspecialchars($relatedProduct->getAnh()) . '.jpg" alt="' . htmlspecialchars($relatedProduct->getTen()) . '">';
+							echo '<img src="/view/assets/images/sanpham/' . htmlspecialchars($relatedProduct->getAnh()) . '.jpg" alt="' . htmlspecialchars($relatedProduct->getTen()) . '">';
 							echo '</div>';
 							echo '<div class="product-card-title">' . htmlspecialchars($relatedProduct->getTen()) . '</div>';
 							echo '<div class="product-card-price">' . number_format($relatedProduct->getGia(), 0, ',', '.') . 'đ</div>';
@@ -150,7 +164,61 @@
 
 <?php require_once __DIR__ . '/footer.php'; ?>
 
-<!-- Include the external JavaScript file -->
-<script src="/assets/khachhang/js/sanpham.js"></script>
+<script>
+    function updateQuantity(change) {
+        const input = document.querySelector('.quantity-input');
+        let value = parseInt(input.value) + change;
+        const min = parseInt(input.min);
+        const max = parseInt(input.max);
+
+        if (value < min) value = min;
+        if (value > max) value = max;
+        input.value = value;
+    }
+
+    // Tab switching logic
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+    });
+</script>
+
+<style>
+    .success {
+        color: #155724;
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        padding: 10px;
+        margin: 10px 0;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const message = document.querySelector('.message');
+        if (message) {
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000); // Biến mất sau 3 giây
+        }
+    });
+</script>
 </body>
 </html>

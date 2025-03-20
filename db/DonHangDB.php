@@ -162,5 +162,31 @@
 			$stmt->close();
 			return $donHangs;
 		}
+		
+		public function layTatCaTheoKhachHang($maKhachHang)
+		{
+			$stmt = $this->conn->prepare("SELECT * FROM DonHang WHERE MaKhachHang = ? ORDER BY NgayBan DESC");
+			if ($stmt === false) {
+				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
+			}
+			
+			$stmt->bind_param("i", $maKhachHang);
+			$stmt->execute();
+			$result = $stmt->get_result();
+			$donHangs = [];
+			
+			while ($row = $result->fetch_assoc()) {
+				$donHangs[] = new DonHang(
+					(string)$row['Ma'],
+					$row['DonGia'],
+					$row['NgayBan'],
+					$row['MaKhachHang'],
+					$row['MaNhanVien']
+				);
+			}
+			
+			$stmt->close();
+			return $donHangs;
+		}
 	}
 	?>

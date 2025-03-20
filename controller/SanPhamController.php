@@ -24,8 +24,7 @@
 		
 		public function LayBangId($id)
 		{
-		$sanPham = $this->db->LayBangId($id);
-		return $sanPham;
+		return $this->db->LayBangId($id);
 		}
 		
 		public function timKiemSanPham($tuKhoa)

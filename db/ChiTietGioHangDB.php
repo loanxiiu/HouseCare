@@ -157,5 +157,17 @@
 			$stmt->close();
 			return $chiTietGioHangs;
 		}
+		public function xoaTheoMaGioHang($maGioHang)
+		{
+			$stmt = $this->conn->prepare("DELETE FROM ChiTietGioHang WHERE MaGioHang = ?");
+			if ($stmt === false) {
+				die("Lỗi chuẩn bị câu lệnh: " . $this->conn->error);
+			}
+			
+			$stmt->bind_param("i", $maGioHang);
+			$result = $stmt->execute();
+			$stmt->close();
+			return $result;
+		}
 	}
 	?>

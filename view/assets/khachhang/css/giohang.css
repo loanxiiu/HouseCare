@@ -185,3 +185,39 @@ h1 {
         display: none;
     }
 }
+.cart-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* Thêm một cột cho nút Mua ngay */
+    gap: 10px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr; /* Cập nhật header để khớp với items */
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 2px solid #333;
+    font-weight: bold;
+}
+
+.buy-now-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.buy-now-btn:hover {
+    background-color: #45a049;
+}
+
+.buy-now {
+    text-align: center;
+}

@@ -402,7 +402,7 @@
 <body>
 <header class="header">
 	<div class="logo">
-		<img class="avatar" src="/assets/images/logo.png" alt="Logo">
+		<img class="avatar" src="/view/assets/images/logo.png" alt="Logo">
 		<span>Quản Trị Hệ Thống</span>
 	</div>
 	<div class="menu">
@@ -415,7 +415,7 @@
 	<!-- Sidebar -->
 	<div class="sidebar">
 		<div class="logo">
-			<img class="avatar" src="/assets/images/admin-avatar.jpg" alt="Admin Avatar">
+			<img class="avatar" src="/view/assets/images/admin-avatar.jpg" alt="Admin Avatar">
 			<p>Xin chào, Admin</p>
 		</div>
 		<ul>
